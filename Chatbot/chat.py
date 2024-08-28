@@ -1,11 +1,14 @@
 import re
+import random
+
 def chatbot_response(user_input):
-    # Convert input to lowercase to handle case sensitivity
     user_input = user_input.lower()
     
-    # Define some basic responses using regular expressions
+    # Define responses
+    greetings = ["Hello! How can I help you today?", "Hi there! What do you need?", "Hey! What's up?"]
+    
     if re.search(r'hello|hi|hey', user_input):
-        return "Hello! How can I help you today?"
+        return random.choice(greetings)
     elif re.search(r'how are you|how do you do', user_input):
         return "I'm just a bot, but I'm doing great! How about you?"
     elif re.search(r'what is your name|who are you', user_input):
@@ -16,7 +19,7 @@ def chatbot_response(user_input):
         return "Goodbye! Have a nice day!"
     else:
         return "I'm sorry, I didn't understand that. Can you please rephrase?"
-    
+
 def chat():
     print("Chatbot: Hello! I'm here to chat with you. Type 'exit' to end the chat.")
     while True:
@@ -24,9 +27,7 @@ def chat():
         response = chatbot_response(user_input)
         print(f"Chatbot: {response}")
         
-        # Exit condition
         if re.search(r'bye|exit|quit', user_input.lower()):
             break
 
-# Start the chat
 chat()
