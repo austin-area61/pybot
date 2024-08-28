@@ -16,3 +16,17 @@ def chatbot_response(user_input):
         return "Goodbye! Have a nice day!"
     else:
         return "I'm sorry, I didn't understand that. Can you please rephrase?"
+    
+def chat():
+    print("Chatbot: Hello! I'm here to chat with you. Type 'exit' to end the chat.")
+    while True:
+        user_input = input("You: ")
+        response = chatbot_response(user_input)
+        print(f"Chatbot: {response}")
+        
+        # Exit condition
+        if re.search(r'bye|exit|quit', user_input.lower()):
+            break
+
+# Start the chat
+chat()
